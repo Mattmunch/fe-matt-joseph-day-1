@@ -34,7 +34,7 @@ const ItemForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     return fetch(
-      'https://fathomless-meadow-03057.herokuapp.com/api/v1/recipes',
+      'https://cors-anywhere.herokuapp.com/https://matt-and-joseph-fridge.herokuapp.com/api/v1/items',
       {
         method: 'POST',
         headers: {
@@ -60,7 +60,7 @@ const ItemForm = () => {
           onClick={() =>
             setItems(oi => [
               ...oi,
-              { name: '', amount: 0, measurement: 'grams' }
+              { name: '', expirationDate: '' }
             ])
           }
         >

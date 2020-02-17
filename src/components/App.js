@@ -1,5 +1,7 @@
 import React from 'react';
 import ItemForm from './itemForm/itemForm';
+import ItemList from '../components/itemList/ItemList';
+import Header from '../components/header/Header';
 import {
   BrowserRouter as Router,
   Route
@@ -8,7 +10,8 @@ import {
 export default function App() {
   return (
     <Router>
-      <Route path='/' component={ItemList}/>
+      <Header/>
+      <Route exact path='/' component={ItemList}/>
       <Route path='/itemForm' component={ItemForm} />
     </Router>
   );
