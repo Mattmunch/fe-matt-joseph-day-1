@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { postItem } from '../../services/itemsApi';
 
 const ItemForm = () => {
   const [items, setItems] = useState([]);
@@ -33,24 +33,7 @@ const ItemForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    return fetch(
-      'https://cors-anywhere.herokuapp.com/https://matt-and-joseph-fridge.herokuapp.com/api/v1/items',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          origin: true
-        },
-        body: JSON.stringify({
-          items
-        })
-      }
-    )
-      .then(res => Promise.all([res.ok, res.json()]))
-      .then(([ok, json]) => {
-        if(!ok) throw json;
-        return json;
-      });
+    postItem(items);
   };
   return (
     <div>

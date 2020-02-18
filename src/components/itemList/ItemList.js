@@ -1,12 +1,12 @@
 import React from 'react';
-import useItems from '../../hooks/useItems';
 import Item from '../item/Item';
+import PropTypes from 'prop-types';
 
-const ItemList = () => {
-  const items = useItems();
-  const itemElements = items.map(({ name, expirationDate }, i) => (
-    <li key={i}>
-      <Item name={name} expirationDate={expirationDate} />
+
+const ItemList = ({ items, setItems }) => {
+  const itemElements = items.map(({ name, expirationDate, _id }) => (
+    <li key={_id}>
+      <Item name={name} expirationDate={expirationDate} id={_id} setItems={setItems}/>
     </li>
   ));
   return (
@@ -15,6 +15,9 @@ const ItemList = () => {
     </>
   );
 };
-
+ItemList.propTypes = {
+  items: PropTypes.array.isRequired,
+  setItems: PropTypes.func.isRequired
+};
 
 export default ItemList;
